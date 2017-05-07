@@ -19,6 +19,10 @@ Be sure *~/.sql_proxy* file is updated with correct information
 INSTANCE_CONNECTION_NAME=''
 ```
 
+### Install proxy
+
+./install.sh
+
 ### How to start / stop cloud sql proxy
 
 ```
@@ -32,7 +36,7 @@ mysql -u root -p -h 127.0.0.1
 [password]
 ```
 
-**MySQL root autologin**
+**MySQL root auto-login**
 
 Set DB access credentials in */root/.my.cnf*
 
