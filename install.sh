@@ -7,10 +7,17 @@ ARCH_TYPE=`uname -m`
 echo "-- Download the proxy"
 wget https://dl.google.com/cloudsql/$PROXY_NAME.linux.amd64
 echo "-- Move the proxy to user bin folder"
+echo $PROXY_BIN
 mv $PROXY_NAME.linux.amd64 $PROXY_BIN
 echo "-- Make the proxy executable"
 chmod +x $PROXY_BIN
 
 # Init proxy connection at boot
-cp ./init./cloud_sql_proxy $INIT_SCRIPT
+echo "-- Copy init script file"
+echo $INIT_SCRIPT
+cp ./init/cloud_sql_proxy $INIT_SCRIPT
+
+echo "-- Set proxy autostart after booting"
 update-rc.d cloud_sql_proxy defaults
+
+echo "-- DONE!"

@@ -1,9 +1,13 @@
-#Install and run GOOGLE SQL Proxy
+## Install and run GOOGLE SQL Proxy
 
-Add file _[user home]/.sql_proxy_
-configuration available:
+**CONFIGURATION REQUIRED**
+Make sure that file *[user home]/.sql_proxy* is available in user home folder
 
-INSTANCE_CONNECTION_NAME 
+Variables required:
+
+**INSTANCE_CONNECTION_NAME**
 Set MySQL connection name available in Google SQL Service
 
+**Sample Files**
+You can copy sample file *.sql_proxy* to *[user home]/.sql_proxy*
 
