@@ -5,8 +5,9 @@ INIT_SCRIPT="/etc/init.d/cloud_sql_proxy"
 PROXY_CONF="$HOME/.sql_proxy"
 ARCH_TYPE=`uname -m`
 
+cd "$(dirname "$0")"
 echo "-- Download the proxy"
-wget https://dl.google.com/cloudsql/$PROXY_NAME.linux.amd64
+wget https://dl.google.com/cloudsql/$PROXY_NAME.linux.amd64 -O $PROXY_NAME.linux.amd64
 echo "-- Move the proxy to user bin folder"
 echo $PROXY_BIN
 mv $PROXY_NAME.linux.amd64 $PROXY_BIN
@@ -16,7 +17,7 @@ chmod +x $PROXY_BIN
 # Init proxy connection at boot
 echo "-- Copy init script file"
 echo $INIT_SCRIPT
-cp ./init/cloud_sql_proxy $INIT_SCRIPT
+cp init/cloud_sql_proxy $INIT_SCRIPT
 
 echo "-- Set proxy autostart after booting"
 update-rc.d cloud_sql_proxy defaults
