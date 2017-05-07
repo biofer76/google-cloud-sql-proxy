@@ -24,13 +24,18 @@ update-rc.d cloud_sql_proxy defaults
 echo -e "
 ---------------------------------
 -    CHECK CONFIGURATION FILE   -
-
+---------------------------------
 "
 if [ -f "$PROXY_CONF" ]
 then
-	echo "$PROXY_CONF found. Check for updates"
+	echo -e "$PROXY_CONF FOUND. 
+    Check for updates"
 else
-	echo "Attention: $PROXY_CONF not found!!!"
+	echo -e "Attention: $PROXY_CONF NOT FOUND!!!
+    copy sample sql_proxy.config file to $HOME folder
+    and add all required config data.
+    "
+    
 fi
 echo "---------------------------------"
 echo "-- DONE!"
