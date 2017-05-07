@@ -19,7 +19,6 @@ Be sure *~/.sql_proxy* file is updated with correct information
 INSTANCE_CONNECTION_NAME=''
 ```
 
-
 ### How to start / stop cloud sql proxy**
 
 ```
@@ -46,9 +45,7 @@ host=127.0.0.1
 
 Then you can access to DBs by `mysql` command without arguments, it also works with mysqldump command for quickly backup operations.
 
-
 ### TODO
 
 - Verify if .sql_proxy file exist and variables are set
 - Add new .sql_proxy file during installation
-
