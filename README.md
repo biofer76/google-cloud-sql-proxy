@@ -19,7 +19,7 @@ Be sure *~/.sql_proxy* file is updated with correct information
 INSTANCE_CONNECTION_NAME=''
 ```
 
-### How to start / stop cloud sql proxy**
+### How to start / stop cloud sql proxy
 
 ```
 /etc/init.d/cloud_sql_proxy {start|stop|restart}
