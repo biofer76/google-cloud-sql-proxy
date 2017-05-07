@@ -4,4 +4,4 @@
 /bower_components/
 /node_modules/
 
-#.sql_proxy
+.sql_proxy
