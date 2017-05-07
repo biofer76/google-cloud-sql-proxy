@@ -2,7 +2,7 @@
 PROXY_BIN="/usr/local/bin/cloud_sql_proxy"
 PROXY_NAME="cloud_sql_proxy"
 INIT_SCRIPT="/etc/init.d/cloud_sql_proxy"
-PROXY_CONF="~/.sql_proxy"
+PROXY_CONF="$HOME/.sql_proxy"
 ARCH_TYPE=`uname -m`
 
 echo "-- Download the proxy"
@@ -21,11 +21,16 @@ cp ./init/cloud_sql_proxy $INIT_SCRIPT
 echo "-- Set proxy autostart after booting"
 update-rc.d cloud_sql_proxy defaults
 
+echo -e "
+---------------------------------
+-    CHECK CONFIGURATION FILE   -
+
+"
 if [ -f "$PROXY_CONF" ]
 then
 	echo "$PROXY_CONF found. Check for updates"
 else
 	echo "Attention: $PROXY_CONF not found!!!"
 fi
-
+echo "---------------------------------"
 echo "-- DONE!"
