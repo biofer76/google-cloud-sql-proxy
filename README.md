@@ -11,3 +11,6 @@ Set MySQL connection name available in Google SQL Service
 **Sample Files**
 You can copy sample file *.sql_proxy* to *[user home]/.sql_proxy*
 
+```
+cp sql_proxy.config ~/.sql_proxy
+```
