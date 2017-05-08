@@ -1,46 +1,82 @@
-## Install and run GOOGLE SQL Proxy
+Install Google SQL Proxy
+========================
 
-### CONFIGURATION REQUIRED
-Make sure that file *[user home]/.sql_proxy* is available and reading permissions are set
 
-**Sample Files**
-
-You can copy sample file *.sql_proxy* to *[user home]/.sql_proxy*
-
-```
-cp sql_proxy.config ~/.sql_proxy
-```
-
-Proxy starts after booting by rc.d configuration.
-Be sure *~/.sql_proxy* file is updated with correct information
-
-```
-# Set MySQL connection name available in Google SQL Service
-INSTANCE_CONNECTION_NAME=''
-```
-
-### Install proxy
+Install
+---------
 
 ```
 ./install.sh
 ```
 
-### How to start / stop cloud sql proxy
+Configuration
+-------------
+
+Depends from process manager  
+
+### Run by init.d
 
 ```
+# Copy LSB file
+cp init.d/cloud_sql_proxy /etc/init.d/cloud_sql_proxy
+
+# Edit and move configuration file to secure folder as .sql_proxy file
+cp init.d/sql_proxy.config /root/.sql_proxy
+
+# Update runlevels (start at boot)
+update-rc.d cloud_sql_proxy enable
+
+# Manual Start / Stop commands
 /etc/init.d/cloud_sql_proxy {start|stop|restart}
-```
-
-### How to connect to MySQL database
 
 ```
+
+**Variables**
+
+`INSTANCE_CONNECTION_NAME`
+
+Connection name available in Google SQL service
+
+### Run by supervisor
+
+```
+# Install supervisor
+
+apt-get install supervisor -y
+
+# Edit and copy configuration to supervisor conf folder 
+
+cp supervisor/cloud_sql_proxy.conf /etc/supervisor/conf.d/cloud_sql_proxy.conf
+
+```
+
+**Variables**
+
+Check file `supervisor/cloud_sql_proxy.conf` and edit placeholders
+
+`SET_NAME` set your process/program name
+`COMMAND`add your supervisor managed program
+
+Customize other values as you prefer.
+
+
+Connect to MySQL database
+-------------------------
+
+Install mysql client on local machine then use command `mysql`with connection arguments
+
+```
+# Install MySQL Client
+apt-get install mysql-client -y
+
+# Connect to MySQL by SQL Proxy 
 mysql -u root -p -h 127.0.0.1
 [password]
 ```
 
 **MySQL root auto-login**
 
-Set DB access credentials in */root/.my.cnf*
+Set DB access credentials in `/root/.my.cnf`
 
 ```
 [client]
@@ -49,9 +85,43 @@ password=ROOT_PASSWORD
 host=127.0.0.1
 ```
 
-Then you can access to DBs by `mysql` command without arguments, it also works with mysqldump command for quickly backup operations.
+You can access to MySQL server by `mysql` command without arguments, it also works with mysqldump command for quickly backup operations.
 
-### TODO
+TODO
+____
 
 - Verify if .sql_proxy file exist and variables are set
 - Add new .sql_proxy file during installation
+
+
+Contributing changes
+--------------------
+
+
+Licensing
+---------
+
+````
+The MIT License (MIT)
+
+Copyright (c) 2017 Fabio Ferrari at particles.io
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of
+this software and associated documentation files (the "Software"), to deal in
+the Software without restriction, including without limitation the rights to
+use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of
+the Software, and to permit persons to whom the Software is furnished to do so,
+subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS
+FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR
+COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER
+IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
+CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+```
+
+
