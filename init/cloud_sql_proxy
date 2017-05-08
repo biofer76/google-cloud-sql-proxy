@@ -17,8 +17,7 @@ LOGFILE=/var/log/$NAME.log
 SOURCE=$HOME/.sql_proxy
 
 echo "Load configuration from $HOME"
-source $SOURCE
-# su - $RUNAS -c "source $SOURCE"
+su - $RUNAS -c "source $SOURCE"
 
 start() {
   if [ -f /var/run/$NAME.pid ] && kill -0 $(cat /var/run/$NAME.pid); then

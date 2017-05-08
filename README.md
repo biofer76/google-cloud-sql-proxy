@@ -21,7 +21,9 @@ INSTANCE_CONNECTION_NAME=''
 
 ### Install proxy
 
+```
 ./install.sh
+```
 
 ### How to start / stop cloud sql proxy
 
