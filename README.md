@@ -1,11 +1,7 @@
 Google SQL Proxy
 ========================
 
-SQL Proxy is a tool made by Google, it allows you to connect to Google MySQL Service without IP restrictions and authentication mechanism managed by IAM roles. Very useful when you are working with a cluster of auto-scaling instances, where all instances IP are ephemeral and auto-assigned.
-
-https://cloud.google.com/sql/
-https://cloud.google.com/sql/docs/mysql/sql-proxy
-https://cloud.google.com/iam/
+[SQL Proxy](https://cloud.google.com/sql/docs/mysql/sql-proxy) is a tool made by Google, it allows you to connect to [Google MySQL Service](https://cloud.google.com/sql/) without IP restrictions and authentication mechanism [managed by IAM roles](https://cloud.google.com/iam). Very useful when you are working with a cluster of auto-scaling instances, where all instances IP are ephemeral and auto-assigned.
 
 Install
 ---------
