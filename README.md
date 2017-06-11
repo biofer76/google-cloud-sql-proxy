@@ -88,7 +88,7 @@ host=127.0.0.1
 You can access to MySQL server by `mysql` command without arguments, it also works with mysqldump command for quickly backup operations.
 
 TODO
-____
+----
 
 - Verify if .sql_proxy file exist and variables are set
 - Add new .sql_proxy file during installation
