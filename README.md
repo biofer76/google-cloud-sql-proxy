@@ -1,9 +1,12 @@
-Install Google SQL Proxy
+Google SQL Proxy
 ========================
 
+[SQL Proxy](https://cloud.google.com/sql/docs/mysql/sql-proxy) is a tool made by Google, it allows you to connect to [Google MySQL Service](https://cloud.google.com/sql/) without IP restrictions and authentication mechanism [managed by IAM roles](https://cloud.google.com/iam). Very useful when you are working with a cluster of auto-scaling instances, where all instances IP are ephemeral and auto-assigned.
 
 Install
 ---------
+
+Just run install command
 
 ```
 ./install.sh
@@ -14,7 +17,7 @@ Configuration
 
 Depends from process manager  
 
-### Run by init.d
+**Run by init.d**
 
 ```
 # Copy LSB file
@@ -37,7 +40,7 @@ update-rc.d cloud_sql_proxy enable
 
 Connection name available in Google SQL service
 
-### Run by supervisor
+**Run by supervisor**
 
 ```
 # Install supervisor
@@ -55,7 +58,8 @@ cp supervisor/cloud_sql_proxy.conf /etc/supervisor/conf.d/cloud_sql_proxy.conf
 Check file `supervisor/cloud_sql_proxy.conf` and edit placeholders
 
 `SET_NAME` set your process/program name
-`COMMAND`add your supervisor managed program
+
+`COMMAND`add your supervisor managed process/program
 
 Customize other values as you prefer.
 
@@ -74,7 +78,7 @@ mysql -u root -p -h 127.0.0.1
 [password]
 ```
 
-**MySQL root auto-login**
+**MySQL root auto-login without password**
 
 Set DB access credentials in `/root/.my.cnf`
 
@@ -91,7 +95,6 @@ TODO
 ----
 
 - Verify if .sql_proxy file exist and variables are set
-- Add new .sql_proxy file during installation
 
 
 Contributing changes
